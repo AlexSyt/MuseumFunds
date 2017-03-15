@@ -39,6 +39,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
+        Log.d(TAG, "onCreate");
         try {
             TableUtils.createTable(connectionSource, Author.class);
             TableUtils.createTable(connectionSource, Exhibit.class);
@@ -54,6 +55,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int i, int i1) {
+        Log.d(TAG, "onUpgrade");
         try {
             TableUtils.dropTable(connectionSource, Author.class, true);
             TableUtils.dropTable(connectionSource, Exhibit.class, true);
