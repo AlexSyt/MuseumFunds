@@ -5,7 +5,12 @@
     <string name="exhibit_creation_year">Creation Year</string>
     <string name="exhibit_author">Author</string>
     <string name="fund_catalog">Fund Catalog</string>
-    <string name="fund_exhibitions">Exhibitions</string>
+    <string name="exhibit_exhibitions">Exhibitions</string>
     <string name="reset_btn">Reset</string>
     <string name="submit_btn">Submit</string>
+    <string name="add_new_exhibition">Add New Exhibition</string>
+    <string name="exhibition_name">Exhibition Name</string>
+    <string name="exhibition_duration">Duration</string>
+    <string name="exhibition_organiser">Organiser</string>
+    <string name="exhibition_exhibits">Exhibits</string>
 </resources>

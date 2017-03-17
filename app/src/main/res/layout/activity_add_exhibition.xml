@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:text="@string/add_new_exhibit"
+        android:text="@string/add_new_exhibition"
         android:textSize="25sp" />
 
     <TableLayout
@@ -28,11 +28,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/exhibit_name"
+                android:text="@string/exhibition_name"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/exhibit_name_et"
+                android:id="@+id/exhibition_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -49,17 +49,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/exhibit_creation_year"
+                android:text="@string/exhibition_duration"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/exhibit_creation_year_et"
+                android:id="@+id/exhibition_duration_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:inputType="date" />
+                android:inputType="text" />
         </TableRow>
 
         <TableRow
@@ -71,11 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/exhibit_author"
+                android:text="@string/exhibition_organiser"
                 android:textSize="15sp" />
 
             <Spinner
-                android:id="@+id/exhibit_author_sp"
+                android:id="@+id/exhibition_organiser_sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -84,7 +84,7 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_exhibit_author_btn"
+                android:id="@+id/add_exhibition_organiser_btn"
                 android:layout_gravity="center"
                 android:background="@null"
                 android:src="@drawable/ic_add_img_btn_24dp" />
@@ -99,39 +99,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/fund_catalog"
+                android:text="@string/exhibition_exhibits"
                 android:textSize="15sp" />
 
             <Spinner
-                android:id="@+id/fund_catalog_sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="2" />
-
-            <ImageButton
-                android:id="@+id/add_fund_catalog_btn"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:src="@drawable/ic_add_img_btn_24dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/exhibit_exhibitions"
-                android:textSize="15sp" />
-
-            <Spinner
-                android:id="@+id/exhibit_exhibitions_sp"
+                android:id="@+id/exhibition_exhibits_sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -150,7 +122,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/reset_exhibit_btn"
+            android:id="@+id/reset_exhibition_btn"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,7 +130,7 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/submit_exhibit_btn"
+            android:id="@+id/submit_exhibition_btn"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
