@@ -1,5 +1,6 @@
 package com.example.alex.museumfunds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -34,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case CM_ADD_EXHIBIT_ID:
+                startActivity(new Intent(this, AddExhibitActivity.class));
                 return true;
 
             case CM_ADD_EXHIBITION_ID:
+                startActivity(new Intent(this, AddExhibitionActivity.class));
                 return true;
 
             default:
