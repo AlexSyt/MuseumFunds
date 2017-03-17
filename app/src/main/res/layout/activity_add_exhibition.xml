@@ -86,7 +86,7 @@
             <ImageButton
                 android:id="@+id/add_exhibition_organiser_btn"
                 android:layout_gravity="center"
-                android:background="@null"
+                android:background="?selectableItemBackground"
                 android:src="@drawable/ic_add_img_btn_24dp" />
         </TableRow>
 

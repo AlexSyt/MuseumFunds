@@ -86,7 +86,7 @@
             <ImageButton
                 android:id="@+id/add_exhibit_author_btn"
                 android:layout_gravity="center"
-                android:background="@null"
+                android:background="?selectableItemBackground"
                 android:src="@drawable/ic_add_img_btn_24dp" />
         </TableRow>
 
@@ -114,7 +114,7 @@
             <ImageButton
                 android:id="@+id/add_fund_catalog_btn"
                 android:layout_gravity="center"
-                android:background="@null"
+                android:background="?selectableItemBackground"
                 android:src="@drawable/ic_add_img_btn_24dp" />
         </TableRow>
 
