@@ -131,13 +131,31 @@
                 android:textSize="15sp" />
 
             <Spinner
-                android:id="@+id/exhibit_exhibitions_sp"
+                android:id="@+id/exhibitions_sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dip"
                 android:layout_marginStart="10dp"
                 android:layout_weight="2" />
+
+            <ImageButton
+                android:id="@+id/add_exhibition_btn"
+                android:layout_gravity="center"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_add_img_btn_24dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/exhibitions_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp" />
         </TableRow>
 
     </TableLayout>
