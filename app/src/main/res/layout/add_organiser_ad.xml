@@ -19,7 +19,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/author_name_et"
+            android:id="@+id/organiser_name_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -36,17 +36,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/author_dob"
+            android:text="@string/organiser_address"
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/author_dob_et"
+            android:id="@+id/organiser_address_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:inputType="date" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -57,17 +57,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/author_country"
+            android:text="@string/organiser_number"
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/author_country_et"
+            android:id="@+id/organiser_number_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:inputType="text" />
+            android:inputType="number" />
     </TableRow>
 
 </TableLayout>
