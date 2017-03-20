@@ -84,9 +84,9 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_exhibit_author_btn"
                 android:layout_gravity="center"
                 android:background="?selectableItemBackground"
+                android:onClick="addAuthorBtnClicked"
                 android:src="@drawable/ic_add_img_btn_36dp" />
         </TableRow>
 
@@ -112,9 +112,9 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_fund_catalog_btn"
                 android:layout_gravity="center"
                 android:background="?selectableItemBackground"
+                android:onClick="addFundCatalogBtnClicked"
                 android:src="@drawable/ic_add_img_btn_36dp" />
         </TableRow>
 
@@ -140,9 +140,9 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_exhibition_btn"
                 android:layout_gravity="center"
                 android:background="?selectableItemBackground"
+                android:onClick="addExhibitionBtnClicked"
                 android:src="@drawable/ic_add_img_btn_36dp" />
         </TableRow>
 
