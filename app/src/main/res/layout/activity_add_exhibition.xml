@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/exhibition_name"
+                android:text="@string/name"
                 android:textSize="15sp" />
 
             <EditText
@@ -84,10 +84,10 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_exhibition_organiser_btn"
                 android:layout_gravity="center"
                 android:background="?selectableItemBackground"
-                android:src="@drawable/ic_add_img_btn_24dp" />
+                android:onClick="addOrganiserBtnClicked"
+                android:src="@drawable/ic_add_img_btn_36dp" />
         </TableRow>
 
         <TableRow
@@ -112,10 +112,10 @@
                 android:layout_weight="2" />
 
             <ImageButton
-                android:id="@+id/add_exhibit_btn"
                 android:layout_gravity="center"
                 android:background="?selectableItemBackground"
-                android:src="@drawable/ic_add_img_btn_24dp" />
+                android:onClick="addExhibitBtnClicked"
+                android:src="@drawable/ic_add_img_btn_36dp" />
         </TableRow>
 
         <TableRow

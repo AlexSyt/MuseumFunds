@@ -9,11 +9,10 @@
     <string name="reset_btn">Reset</string>
     <string name="submit_btn">Submit</string>
     <string name="add_new_exhibition">Add New Exhibition</string>
-    <string name="exhibition_name">Exhibition Name</string>
     <string name="exhibition_duration">Duration</string>
     <string name="exhibition_organiser">Organiser</string>
     <string name="exhibition_exhibits">Exhibits</string>
-    <string name="name">Name:</string>
+    <string name="name">Name</string>
     <string name="author_dob">DOB</string>
     <string name="author_country">Country</string>
     <string name="organiser_address">Address</string>
