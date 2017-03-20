@@ -17,6 +17,12 @@ public class Author extends BaseColumns {
 
     }
 
+    public Author(String name, String dob, String country) {
+        this.name = name;
+        this.dob = dob;
+        this.country = country;
+    }
+
     public String getDob() {
         return dob;
     }
@@ -31,5 +37,10 @@ public class Author extends BaseColumns {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + dob + " " + country;
     }
 }
