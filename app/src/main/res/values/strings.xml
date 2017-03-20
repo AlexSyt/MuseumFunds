@@ -14,8 +14,12 @@
     <string name="exhibition_organiser">Organiser</string>
     <string name="exhibition_exhibits">Exhibits</string>
     <string name="name">Name:</string>
-    <string name="author_dob">DOB:</string>
-    <string name="author_country">Country:</string>
-    <string name="organiser_address">Address:</string>
-    <string name="organiser_number">Number:</string>
+    <string name="author_dob">DOB</string>
+    <string name="author_country">Country</string>
+    <string name="organiser_address">Address</string>
+    <string name="organiser_number">Number</string>
+    <string name="fund">Fund</string>
+    <string name="add_new_fund">Add New Fund</string>
+    <string name="fund_name">Fund Name</string>
+    <string name="fund_description">Description</string>
 </resources>
