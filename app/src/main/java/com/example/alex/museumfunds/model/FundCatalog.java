@@ -13,6 +13,11 @@ public class FundCatalog extends BaseColumns {
 
     }
 
+    public FundCatalog(String name, Fund fund) {
+        this.name = name;
+        this.fund = fund;
+    }
+
     public Fund getFund() {
         return fund;
     }

@@ -20,6 +20,13 @@ public class Exhibit extends BaseColumns {
 
     }
 
+    public Exhibit(String name, String creationYear, Author author, FundCatalog fundCatalog) {
+        this.name = name;
+        this.creationYear = creationYear;
+        this.author = author;
+        this.fundCatalog = fundCatalog;
+    }
+
     public String getCreationYear() {
         return creationYear;
     }

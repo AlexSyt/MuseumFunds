@@ -22,6 +22,13 @@ public class Exhibition extends BaseColumns {
 
     }
 
+    public Exhibition(String name, Organiser organiser, Date startDate, Date endDate) {
+        this.name = name;
+        this.organiser = organiser;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public Organiser getOrganiser() {
         return organiser;
     }

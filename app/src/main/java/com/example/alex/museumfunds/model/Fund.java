@@ -14,6 +14,11 @@ public class Fund extends BaseColumns {
 
     }
 
+    public Fund(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getDescription() {
         return description;
     }

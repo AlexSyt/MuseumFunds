@@ -17,6 +17,12 @@ public class Organiser extends BaseColumns {
 
     }
 
+    public Organiser(String name, String address, String phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getAddress() {
         return address;
     }

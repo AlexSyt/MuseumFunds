@@ -22,6 +22,11 @@ public class ExhibitExhibition {
 
     }
 
+    public ExhibitExhibition(Exhibit exhibit, Exhibition exhibition) {
+        this.exhibit = exhibit;
+        this.exhibition = exhibition;
+    }
+
     public UUID getId() {
         return id;
     }
