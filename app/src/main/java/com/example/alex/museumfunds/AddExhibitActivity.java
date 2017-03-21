@@ -6,27 +6,55 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Author;
+import com.example.alex.museumfunds.model.Exhibit;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddExhibitActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitActivity.class.getSimpleName();
+    private Exhibit newExhibit = new Exhibit();
+    private List<String> authorsNames = new ArrayList<>();
+    private List<Author> authors;
     private DbHelper dbHelper;
+    private ArrayAdapter<String> authorsAdapter;
+    private Spinner spAuthors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exhibit);
+
+        setSpAuthorsAdapter();
+    }
+
+    private void setSpAuthorsAdapter() {
+        try {
+            final Dao<Author, Integer> authorDao = getHelper().getAuthorDao();
+            authors = authorDao.queryForAll();
+            for (Author author : authors) authorsNames.add(author.getName());
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to load authors from DB", e);
+        }
+
+        authorsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, authorsNames);
+        authorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
+        spAuthors.setAdapter(authorsAdapter);
     }
 
     @Override
@@ -71,17 +99,22 @@ public class AddExhibitActivity extends AppCompatActivity {
             try {
                 final Dao<Author, Integer> authorDao = getHelper().getAuthorDao();
                 authorDao.create(author);
+                authors.add(author);
+                authorsNames.add(author.getName());
+                authorsAdapter.notifyDataSetChanged();
+                spAuthors.setSelection(authorsAdapter.getCount());
             } catch (SQLException e) {
                 Log.e(TAG, "Unable to create author" + author, e);
             }
         } else {
-            Toast.makeText(this, "Fields must be filled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void addFundCatalogBtnClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
         View adFundCatalogView = inflater.inflate(R.layout.add_fund_catalog_ad, null);
+
         final CheckBox cbNewFund = (CheckBox) adFundCatalogView.findViewById(R.id.new_fund_cb);
         final TableLayout tlNewFund = (TableLayout) adFundCatalogView.findViewById(R.id.new_fund_tl);
 
