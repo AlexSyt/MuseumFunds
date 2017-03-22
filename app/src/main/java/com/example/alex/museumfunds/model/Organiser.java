@@ -5,7 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "organisers")
-public class Organiser extends BaseColumns {
+public class Organiser extends BaseEntity {
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING)
     private String address;

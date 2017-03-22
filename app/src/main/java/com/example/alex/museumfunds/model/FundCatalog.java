@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "fund_catalogs")
-public class FundCatalog extends BaseColumns {
+public class FundCatalog extends BaseEntity {
 
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private Fund fund;

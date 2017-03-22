@@ -5,7 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "authors")
-public class Author extends BaseColumns {
+public class Author extends BaseEntity {
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING)
     private String dob;

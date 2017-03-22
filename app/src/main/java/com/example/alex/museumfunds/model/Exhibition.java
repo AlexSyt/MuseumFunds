@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.util.Date;
 
 @DatabaseTable(tableName = "exhibitions")
-public class Exhibition extends BaseColumns {
+public class Exhibition extends BaseEntity {
 
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private Organiser organiser;

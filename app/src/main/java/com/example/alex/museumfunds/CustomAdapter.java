@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.alex.museumfunds.model.BaseColumns;
+import com.example.alex.museumfunds.model.BaseEntity;
 
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter<BaseColumns> {
+public class CustomAdapter extends ArrayAdapter<BaseEntity> {
 
     private LayoutInflater inflater;
     private List objects;
@@ -39,8 +39,8 @@ public class CustomAdapter extends ArrayAdapter<BaseColumns> {
             convertView.setTag(viewHolder);
         } else viewHolder = (ViewHolder) convertView.getTag();
 
-        final BaseColumns baseColumns = (BaseColumns) this.objects.get(position);
-        viewHolder.label.setText(baseColumns.getName());
+        final BaseEntity baseEntity = (BaseEntity) this.objects.get(position);
+        viewHolder.label.setText(baseEntity.getName());
         return convertView;
     }
 
@@ -48,8 +48,8 @@ public class CustomAdapter extends ArrayAdapter<BaseColumns> {
     public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         final View row = inflater.inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
         final TextView label = (TextView) row.findViewById(android.R.id.text1);
-        final BaseColumns baseColumns = (BaseColumns) this.objects.get(position);
-        label.setText(baseColumns.getName());
+        final BaseEntity baseEntity = (BaseEntity) this.objects.get(position);
+        label.setText(baseEntity.getName());
         return row;
     }
 }

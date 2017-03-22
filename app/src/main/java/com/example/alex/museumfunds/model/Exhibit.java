@@ -5,7 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "exhibits")
-public class Exhibit extends BaseColumns {
+public class Exhibit extends BaseEntity {
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING)
     private String creationYear;
