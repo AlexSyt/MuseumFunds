@@ -12,10 +12,10 @@ import com.example.alex.museumfunds.model.BaseEntity;
 
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter<BaseEntity> {
+public class CustomAdapter extends ArrayAdapter {
 
-    private LayoutInflater inflater;
-    private List objects;
+    private final LayoutInflater inflater;
+    private final List objects;
 
     public CustomAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
@@ -39,7 +39,7 @@ public class CustomAdapter extends ArrayAdapter<BaseEntity> {
             convertView.setTag(viewHolder);
         } else viewHolder = (ViewHolder) convertView.getTag();
 
-        final BaseEntity baseEntity = (BaseEntity) this.objects.get(position);
+        final BaseEntity baseEntity = (BaseEntity) objects.get(position);
         viewHolder.label.setText(baseEntity.getName());
         return convertView;
     }
@@ -48,7 +48,7 @@ public class CustomAdapter extends ArrayAdapter<BaseEntity> {
     public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         final View row = inflater.inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
         final TextView label = (TextView) row.findViewById(android.R.id.text1);
-        final BaseEntity baseEntity = (BaseEntity) this.objects.get(position);
+        final BaseEntity baseEntity = (BaseEntity) objects.get(position);
         label.setText(baseEntity.getName());
         return row;
     }
