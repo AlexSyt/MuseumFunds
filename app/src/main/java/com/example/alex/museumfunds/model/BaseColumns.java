@@ -5,7 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 
 import java.util.UUID;
 
-class BaseColumns {
+public class BaseColumns {
 
     @DatabaseField(canBeNull = false, dataType = DataType.UUID, id = true)
     protected UUID id = UUID.randomUUID();
