@@ -146,8 +146,10 @@ public class AddExhibitActivity extends AppCompatActivity {
             newFund[0] = isChecked;
             if (isChecked) {
                 tlNewFund.setVisibility(View.VISIBLE);
+                spFunds.setEnabled(false);
             } else {
                 tlNewFund.setVisibility(View.GONE);
+                spFunds.setEnabled(true);
             }
         });
 
