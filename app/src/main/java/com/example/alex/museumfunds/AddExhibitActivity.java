@@ -26,11 +26,20 @@ public class AddExhibitActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitActivity.class.getSimpleName();
     private DbHelper dbHelper;
+    private EditText etExhibitName;
+    private EditText etCreationYear;
+    private Spinner spAuthors;
+    private Spinner spFundCatalogs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exhibit);
+
+        spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
+        spFundCatalogs = (Spinner) findViewById(R.id.fund_catalog_sp);
+        etExhibitName = (EditText) findViewById(R.id.exhibit_name_et);
+        etCreationYear = (EditText) findViewById(R.id.exhibit_creation_year_et);
 
         setSpAuthorsAdapter();
         setSpFundCatalogsAdapter();
@@ -54,7 +63,6 @@ public class AddExhibitActivity extends AppCompatActivity {
 
 
     private List<Author> authors;
-    private Spinner spAuthors;
     private CustomAdapter authorsAdapter;
 
     private void setSpAuthorsAdapter() {
@@ -68,7 +76,6 @@ public class AddExhibitActivity extends AppCompatActivity {
         authorsAdapter = new CustomAdapter(this, android.R.layout.simple_spinner_item, authors);
         authorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
         spAuthors.setAdapter(authorsAdapter);
     }
 
@@ -111,7 +118,6 @@ public class AddExhibitActivity extends AppCompatActivity {
 
 
     private List<FundCatalog> fundCatalogs;
-    private Spinner spFundCatalogs;
     private CustomAdapter fundCatalogsAdapter;
 
     private void setSpFundCatalogsAdapter() {
@@ -125,7 +131,6 @@ public class AddExhibitActivity extends AppCompatActivity {
         fundCatalogsAdapter = new CustomAdapter(this, android.R.layout.simple_spinner_item, fundCatalogs);
         fundCatalogsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spFundCatalogs = (Spinner) findViewById(R.id.fund_catalog_sp);
         spFundCatalogs.setAdapter(fundCatalogsAdapter);
     }
 
@@ -226,6 +231,17 @@ public class AddExhibitActivity extends AppCompatActivity {
 
 
     public void addExhibitionBtnClicked(View view) {
+
+    }
+
+    public void resetBtnClicked(View view) {
+        etExhibitName.setText("");
+        etCreationYear.setText("");
+        spAuthors.setSelection(0);
+        spFundCatalogs.setSelection(0);
+    }
+
+    public void submitBtnClicked(View view) {
 
     }
 }
