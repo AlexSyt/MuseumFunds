@@ -59,6 +59,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
+                android:hint="dd.mm.yyyy-dd.mm.yyyy"
                 android:inputType="text" />
         </TableRow>
 
@@ -144,6 +145,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="resetBtnClicked"
             android:text="@string/reset_btn"
             android:textAllCaps="false" />
 
@@ -152,6 +154,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="submitBtnClicked"
             android:text="@string/submit_btn"
             android:textAllCaps="false" />
 
