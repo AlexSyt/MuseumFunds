@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Author;
+import com.example.alex.museumfunds.model.Exhibit;
 import com.example.alex.museumfunds.model.Fund;
 import com.example.alex.museumfunds.model.FundCatalog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -234,6 +235,7 @@ public class AddExhibitActivity extends AppCompatActivity {
 
     }
 
+
     public void resetBtnClicked(View view) {
         etExhibitName.setText("");
         etCreationYear.setText("");
@@ -242,6 +244,23 @@ public class AddExhibitActivity extends AppCompatActivity {
     }
 
     public void submitBtnClicked(View view) {
+        String name = etExhibitName.getText().toString();
+        String creationYear = etCreationYear.getText().toString();
+        boolean isFieldsFilled = name.trim().length() > 0 && creationYear.trim().length() > 0;
 
+        if (isFieldsFilled && spAuthors.getCount() > 0 && spFundCatalogs.getCount() > 0) {
+            final Author author = (Author) spAuthors.getSelectedItem();
+            final FundCatalog catalog = (FundCatalog) spFundCatalogs.getSelectedItem();
+            final Exhibit exhibit = new Exhibit(name, creationYear, author, catalog);
+            try {
+                final Dao<Exhibit, Integer> exhibitDao = getHelper().getExhibitDao();
+                exhibitDao.create(exhibit);
+            } catch (SQLException e) {
+                Log.e(TAG, "Unable to create exhibit", e);
+            }
+            resetBtnClicked(view);
+        } else {
+            Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+        }
     }
 }
