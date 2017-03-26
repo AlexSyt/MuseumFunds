@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
+import com.example.alex.museumfunds.model.Exhibit;
 import com.example.alex.museumfunds.model.Exhibition;
 import com.example.alex.museumfunds.model.Organiser;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -29,17 +30,20 @@ public class AddExhibitionActivity extends AppCompatActivity {
     private EditText etExhibitionName;
     private EditText etDuration;
     private Spinner spOrganisers;
+    private Spinner spExhibits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exhibition);
 
-        spOrganisers = (Spinner) findViewById(R.id.exhibition_organiser_sp);
         etExhibitionName = (EditText) findViewById(R.id.exhibition_name_et);
         etDuration = (EditText) findViewById(R.id.exhibition_duration_et);
+        spOrganisers = (Spinner) findViewById(R.id.exhibition_organiser_sp);
+        spExhibits = (Spinner) findViewById(R.id.exhibits_sp);
 
         setSpOrganisersAdapter();
+        setSpExhibitsAdapter();
     }
 
     @Override
@@ -56,6 +60,23 @@ public class AddExhibitionActivity extends AppCompatActivity {
             dbHelper = OpenHelperManager.getHelper(this, DbHelper.class);
         }
         return dbHelper;
+    }
+
+
+    private void setSpExhibitsAdapter() {
+        List<Exhibit> exhibits = null;
+
+        try {
+            final Dao<Exhibit, Integer> exhibitDao = getHelper().getExhibitDao();
+            exhibits = exhibitDao.queryForAll();
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to load exhibits from DB", e);
+        }
+
+        CustomAdapter exhibitsAd = new CustomAdapter(this, android.R.layout.simple_spinner_item, exhibits);
+        exhibitsAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spExhibits.setAdapter(exhibitsAd);
     }
 
 
