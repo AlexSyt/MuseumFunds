@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Author;
 import com.example.alex.museumfunds.model.Exhibit;
+import com.example.alex.museumfunds.model.Exhibition;
 import com.example.alex.museumfunds.model.Fund;
 import com.example.alex.museumfunds.model.FundCatalog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -31,19 +32,22 @@ public class AddExhibitActivity extends AppCompatActivity {
     private EditText etCreationYear;
     private Spinner spAuthors;
     private Spinner spFundCatalogs;
+    private Spinner spExhibitions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exhibit);
 
-        spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
-        spFundCatalogs = (Spinner) findViewById(R.id.fund_catalog_sp);
         etExhibitName = (EditText) findViewById(R.id.exhibit_name_et);
         etCreationYear = (EditText) findViewById(R.id.exhibit_creation_year_et);
+        spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
+        spFundCatalogs = (Spinner) findViewById(R.id.fund_catalog_sp);
+        spExhibitions = (Spinner) findViewById(R.id.exhibitions_sp);
 
         setSpAuthorsAdapter();
         setSpFundCatalogsAdapter();
+        setSpExhibitionsAdapter();
     }
 
     @Override
@@ -60,6 +64,23 @@ public class AddExhibitActivity extends AppCompatActivity {
             dbHelper = OpenHelperManager.getHelper(this, DbHelper.class);
         }
         return dbHelper;
+    }
+
+
+    private void setSpExhibitionsAdapter() {
+        List<Exhibition> exhibitions = null;
+
+        try {
+            final Dao<Exhibition, Integer> exhibitionDao = getHelper().getExhibitionDao();
+            exhibitions = exhibitionDao.queryForAll();
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to load exhibitions from DB", e);
+        }
+
+        CustomAdapter exhbAd = new CustomAdapter(this, android.R.layout.simple_spinner_item, exhibitions);
+        exhbAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spExhibitions.setAdapter(exhbAd);
     }
 
 
