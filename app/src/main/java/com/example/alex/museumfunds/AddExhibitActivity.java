@@ -10,11 +10,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Author;
 import com.example.alex.museumfunds.model.Exhibit;
+import com.example.alex.museumfunds.model.ExhibitExhibition;
 import com.example.alex.museumfunds.model.Exhibition;
 import com.example.alex.museumfunds.model.Fund;
 import com.example.alex.museumfunds.model.FundCatalog;
@@ -22,17 +24,20 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddExhibitActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitActivity.class.getSimpleName();
+    private ArrayList<Exhibition> exhibitions = new ArrayList<>();
     private DbHelper dbHelper;
     private EditText etExhibitName;
     private EditText etCreationYear;
     private Spinner spAuthors;
     private Spinner spFundCatalogs;
     private Spinner spExhibitions;
+    private TextView tvExhibitions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class AddExhibitActivity extends AppCompatActivity {
         spAuthors = (Spinner) findViewById(R.id.exhibit_author_sp);
         spFundCatalogs = (Spinner) findViewById(R.id.fund_catalog_sp);
         spExhibitions = (Spinner) findViewById(R.id.exhibitions_sp);
+        tvExhibitions = (TextView) findViewById(R.id.exhibitions_tv);
 
         setSpAuthorsAdapter();
         setSpFundCatalogsAdapter();
@@ -253,15 +259,21 @@ public class AddExhibitActivity extends AppCompatActivity {
 
 
     public void addExhibitionBtnClicked(View view) {
-
+        Exhibition exhibition = (Exhibition) spExhibitions.getSelectedItem();
+        if (!exhibitions.contains(exhibition)) {
+            exhibitions.add(exhibition);
+        }
+        tvExhibitions.setText(exhibitions.toString());
     }
-
 
     public void resetBtnClicked(View view) {
         etExhibitName.setText("");
         etCreationYear.setText("");
         spAuthors.setSelection(0);
         spFundCatalogs.setSelection(0);
+        spExhibitions.setSelection(0);
+        exhibitions.clear();
+        tvExhibitions.setText(getString(R.string.exhibitions));
     }
 
     public void submitBtnClicked(View view) {
@@ -273,15 +285,36 @@ public class AddExhibitActivity extends AppCompatActivity {
             final Author author = (Author) spAuthors.getSelectedItem();
             final FundCatalog catalog = (FundCatalog) spFundCatalogs.getSelectedItem();
             final Exhibit exhibit = new Exhibit(name, creationYear, author, catalog);
-            try {
-                final Dao<Exhibit, Integer> exhibitDao = getHelper().getExhibitDao();
-                exhibitDao.create(exhibit);
-            } catch (SQLException e) {
-                Log.e(TAG, "Unable to create exhibit", e);
+
+            createExhibit(exhibit);
+
+            if (!exhibitions.isEmpty()) {
+                createExhibitExhibitions(exhibit);
             }
+
             resetBtnClicked(view);
         } else {
             Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void createExhibit(Exhibit exhibit) {
+        try {
+            final Dao<Exhibit, Integer> exhibitDao = getHelper().getExhibitDao();
+            exhibitDao.create(exhibit);
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to create exhibit", e);
+        }
+    }
+
+    private void createExhibitExhibitions(Exhibit exhibit) {
+        try {
+            final Dao<ExhibitExhibition, Integer> dao = getHelper().getExhibitExhibitionDao();
+            for (Exhibition exhibition : exhibitions) {
+                dao.create(new ExhibitExhibition(exhibit, exhibition));
+            }
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to create exhibit exhibitions", e);
         }
     }
 }

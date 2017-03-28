@@ -52,4 +52,9 @@ public class Exhibition extends BaseEntity {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
