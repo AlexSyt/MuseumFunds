@@ -22,4 +22,5 @@
     <string name="fund_name">Fund Name</string>
     <string name="fund_description">Description</string>
     <string name="exhibitions">here will be displayed the exhibitions</string>
+    <string name="exhibits">here will be displayed the exhibits</string>
 </resources>

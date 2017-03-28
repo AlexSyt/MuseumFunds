@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Exhibit;
+import com.example.alex.museumfunds.model.ExhibitExhibition;
 import com.example.alex.museumfunds.model.Exhibition;
 import com.example.alex.museumfunds.model.Organiser;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -20,17 +22,20 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class AddExhibitionActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitionActivity.class.getSimpleName();
+    private ArrayList<Exhibit> exhibits = new ArrayList<>();
     private DbHelper dbHelper;
     private EditText etExhibitionName;
     private EditText etDuration;
     private Spinner spOrganisers;
     private Spinner spExhibits;
+    private TextView tvExhibits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class AddExhibitionActivity extends AppCompatActivity {
         etDuration = (EditText) findViewById(R.id.exhibition_duration_et);
         spOrganisers = (Spinner) findViewById(R.id.exhibition_organiser_sp);
         spExhibits = (Spinner) findViewById(R.id.exhibits_sp);
+        tvExhibits = (TextView) findViewById(R.id.exhibits_tv);
 
         setSpOrganisersAdapter();
         setSpExhibitsAdapter();
@@ -136,14 +142,20 @@ public class AddExhibitionActivity extends AppCompatActivity {
 
 
     public void addExhibitBtnClicked(View view) {
-
+        Exhibit exhibit = (Exhibit) spExhibits.getSelectedItem();
+        if (!exhibits.contains(exhibit)) {
+            exhibits.add(exhibit);
+        }
+        tvExhibits.setText(exhibits.toString());
     }
-
 
     public void resetBtnClicked(View view) {
         etExhibitionName.setText("");
         etDuration.setText("");
         spOrganisers.setSelection(0);
+        spExhibits.setSelection(0);
+        exhibits.clear();
+        tvExhibits.setText(getText(R.string.exhibits));
     }
 
     public void submitBtnClicked(View view) {
@@ -160,7 +172,11 @@ public class AddExhibitionActivity extends AppCompatActivity {
                 Date start = sdf.parse(dur[0]);
                 Date end = sdf.parse(dur[1]);
                 Exhibition exhibition = new Exhibition(name, org, start, end);
+
                 createExhibition(exhibition);
+                if (!exhibits.isEmpty()) {
+                    createExhibitionExhibits(exhibition);
+                }
                 resetBtnClicked(view);
             } catch (ParseException e) {
                 Toast.makeText(this, "Invalid duration", Toast.LENGTH_SHORT).show();
@@ -177,6 +193,17 @@ public class AddExhibitionActivity extends AppCompatActivity {
             exhibitionDao.create(exhibition);
         } catch (SQLException e) {
             Log.e(TAG, "Unable to create exhibition", e);
+        }
+    }
+
+    private void createExhibitionExhibits(Exhibition exhibition) {
+        try {
+            final Dao<ExhibitExhibition, Integer> dao = getHelper().getExhibitExhibitionDao();
+            for (Exhibit exhibit : exhibits) {
+                dao.create(new ExhibitExhibition(exhibit, exhibition));
+            }
+        } catch (SQLException e) {
+            Log.e(TAG, "Unable to create exhibition exhibits", e);
         }
     }
 }

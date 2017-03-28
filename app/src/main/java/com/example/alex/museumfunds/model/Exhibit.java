@@ -50,4 +50,9 @@ public class Exhibit extends BaseEntity {
     public void setFundCatalog(FundCatalog fundCatalog) {
         this.fundCatalog = fundCatalog;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
