@@ -3,21 +3,40 @@ package com.example.alex.museumfunds;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        setupViewPager();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         registerForContextMenu(fab);
         fab.setOnClickListener((View view) -> openContextMenu(fab));
+    }
+
+    private void setupViewPager() {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new ExhibitsFragment(), "Exhibits");
+        adapter.addFragment(new ExhibitionsFragment(), "Exhibitions");
+        viewPager.setAdapter(adapter);
     }
 
     private static final int CM_ADD_EXHIBIT_ID = 1;
@@ -45,5 +64,35 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+}
+
+class ViewPagerAdapter extends FragmentPagerAdapter {
+
+    private final List<Fragment> fragments = new ArrayList<>();
+    private final List<String> titles = new ArrayList<>();
+
+    public ViewPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return fragments.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return fragments.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titles.get(position);
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+        fragments.add(fragment);
+        titles.add(title);
     }
 }
