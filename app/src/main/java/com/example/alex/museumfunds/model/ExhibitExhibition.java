@@ -9,13 +9,16 @@ import java.util.UUID;
 @DatabaseTable(tableName = "exhibits_exhibitions")
 public class ExhibitExhibition {
 
+    public static final String EXHIBIT_ID = "exhibit_id";
+    public static final String EXHIBITION_ID = "exhibition_id";
+
     @DatabaseField(canBeNull = false, dataType = DataType.UUID, id = true)
     private UUID id = UUID.randomUUID();
 
-    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = EXHIBIT_ID)
     private Exhibit exhibit;
 
-    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(canBeNull = false, foreign = true, columnName = EXHIBITION_ID)
     private Exhibition exhibition;
 
     public ExhibitExhibition() {
