@@ -23,4 +23,8 @@
     <string name="fund_description">Description</string>
     <string name="exhibitions">here will be displayed the exhibitions</string>
     <string name="exhibits">here will be displayed the exhibits</string>
+    <string name="author_name">Author Name</string>
+    <string name="author_country_full">Author Country</string>
+    <string name="author_dob_full">Author DOB</string>
+    <string name="fund_description_full">Fund Description</string>
 </resources>
