@@ -29,28 +29,4 @@ public class ExhibitExhibition {
         this.exhibit = exhibit;
         this.exhibition = exhibition;
     }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Exhibit getExhibit() {
-        return exhibit;
-    }
-
-    public void setExhibit(Exhibit exhibit) {
-        this.exhibit = exhibit;
-    }
-
-    public Exhibition getExhibition() {
-        return exhibition;
-    }
-
-    public void setExhibition(Exhibition exhibition) {
-        this.exhibition = exhibition;
-    }
 }

@@ -17,8 +17,8 @@ public class CustomAdapter extends ArrayAdapter {
     private final LayoutInflater inflater;
     private final List objects;
 
-    public CustomAdapter(Context context, int resource, List objects) {
-        super(context, resource, objects);
+    public CustomAdapter(Context context, List objects) {
+        super(context, android.R.layout.simple_spinner_item, objects);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.objects = objects;
     }

@@ -29,7 +29,7 @@ import java.util.List;
 public class AddExhibitionActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitionActivity.class.getSimpleName();
-    private ArrayList<Exhibit> exhibits = new ArrayList<>();
+    private final ArrayList<Exhibit> exhibits = new ArrayList<>();
     private DbHelper dbHelper;
     private EditText etExhibitionName;
     private EditText etDuration;
@@ -79,7 +79,7 @@ public class AddExhibitionActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load exhibits from DB", e);
         }
 
-        CustomAdapter exhibitsAd = new CustomAdapter(this, android.R.layout.simple_spinner_item, exhibits);
+        CustomAdapter exhibitsAd = new CustomAdapter(this, exhibits);
         exhibitsAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spExhibits.setAdapter(exhibitsAd);
@@ -97,7 +97,7 @@ public class AddExhibitionActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load organisers from DB", e);
         }
 
-        organisersAdaptor = new CustomAdapter(this, android.R.layout.simple_spinner_item, organisers);
+        organisersAdaptor = new CustomAdapter(this, organisers);
         organisersAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spOrganisers.setAdapter(organisersAdaptor);

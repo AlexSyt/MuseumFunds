@@ -21,8 +21,4 @@ public class FundCatalog extends BaseEntity {
     public Fund getFund() {
         return fund;
     }
-
-    public void setFund(Fund fund) {
-        this.fund = fund;
-    }
 }

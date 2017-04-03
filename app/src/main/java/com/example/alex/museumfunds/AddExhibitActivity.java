@@ -30,7 +30,7 @@ import java.util.List;
 public class AddExhibitActivity extends AppCompatActivity {
 
     private static final String TAG = AddExhibitActivity.class.getSimpleName();
-    private ArrayList<Exhibition> exhibitions = new ArrayList<>();
+    private final ArrayList<Exhibition> exhibitions = new ArrayList<>();
     private DbHelper dbHelper;
     private EditText etExhibitName;
     private EditText etCreationYear;
@@ -83,7 +83,7 @@ public class AddExhibitActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load exhibitions from DB", e);
         }
 
-        CustomAdapter exhbAd = new CustomAdapter(this, android.R.layout.simple_spinner_item, exhibitions);
+        CustomAdapter exhbAd = new CustomAdapter(this, exhibitions);
         exhbAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spExhibitions.setAdapter(exhbAd);
@@ -101,7 +101,7 @@ public class AddExhibitActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load authors from DB", e);
         }
 
-        authorsAdapter = new CustomAdapter(this, android.R.layout.simple_spinner_item, authors);
+        authorsAdapter = new CustomAdapter(this, authors);
         authorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spAuthors.setAdapter(authorsAdapter);
@@ -156,7 +156,7 @@ public class AddExhibitActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load fund catalogs from DB", e);
         }
 
-        fundCatalogsAdapter = new CustomAdapter(this, android.R.layout.simple_spinner_item, fundCatalogs);
+        fundCatalogsAdapter = new CustomAdapter(this, fundCatalogs);
         fundCatalogsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spFundCatalogs.setAdapter(fundCatalogsAdapter);
@@ -219,7 +219,7 @@ public class AddExhibitActivity extends AppCompatActivity {
             Log.e(TAG, "Unable to load funds from DB", e);
         }
 
-        CustomAdapter fundsAdapter = new CustomAdapter(this, android.R.layout.simple_spinner_item, funds);
+        CustomAdapter fundsAdapter = new CustomAdapter(this, funds);
         fundsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spFunds.setAdapter(fundsAdapter);

@@ -31,24 +31,12 @@ public class Exhibit extends BaseEntity {
         return creationYear;
     }
 
-    public void setCreationYear(String creationYear) {
-        this.creationYear = creationYear;
-    }
-
     public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public FundCatalog getFundCatalog() {
         return fundCatalog;
-    }
-
-    public void setFundCatalog(FundCatalog fundCatalog) {
-        this.fundCatalog = fundCatalog;
     }
 
     @Override

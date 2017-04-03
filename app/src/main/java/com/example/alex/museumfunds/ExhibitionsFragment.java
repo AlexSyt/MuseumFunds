@@ -39,11 +39,6 @@ public class ExhibitionsFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_exhibitions, container, false);
 
@@ -124,8 +119,8 @@ public class ExhibitionsFragment extends Fragment {
 
 class ExhibitionCardAdapter extends RecyclerView.Adapter<ExhibitionCardAdapter.ExhibitionViewHolder> {
 
-    private List<Exhibition> exhibitions;
-    private ExhibitionsFragment fragment;
+    private final List<Exhibition> exhibitions;
+    private final ExhibitionsFragment fragment;
 
     public ExhibitionCardAdapter(List<Exhibition> exhibitions, ExhibitionsFragment fragment) {
         this.exhibitions = exhibitions;
@@ -166,13 +161,13 @@ class ExhibitionCardAdapter extends RecyclerView.Adapter<ExhibitionCardAdapter.E
 
     static class ExhibitionViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvExhibitionName;
-        TextView tvExhibitionStart;
-        TextView tvExhibitionEnd;
-        TextView tvOrganiserName;
-        TextView tvOrganiserAddress;
-        TextView tvOrganiserNumber;
-        TextView tvExhibits;
+        final TextView tvExhibitionName;
+        final TextView tvExhibitionStart;
+        final TextView tvExhibitionEnd;
+        final TextView tvOrganiserName;
+        final TextView tvOrganiserAddress;
+        final TextView tvOrganiserNumber;
+        final TextView tvExhibits;
 
         public ExhibitionViewHolder(View itemView) {
             super(itemView);

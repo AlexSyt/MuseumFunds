@@ -33,24 +33,12 @@ public class Exhibition extends BaseEntity {
         return organiser;
     }
 
-    public void setOrganiser(Organiser organiser) {
-        this.organiser = organiser;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
     public Date getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     @Override
