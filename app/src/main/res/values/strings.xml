@@ -27,4 +27,9 @@
     <string name="author_country_full">Author Country</string>
     <string name="author_dob_full">Author DOB</string>
     <string name="fund_description_full">Fund Description</string>
+    <string name="exhibition_start">Start Date</string>
+    <string name="exhibition_end">End Date</string>
+    <string name="organiser_name">Organiser Name</string>
+    <string name="organiser_address_full">Organiser Address</string>
+    <string name="organiser_number_full">Phone Number</string>
 </resources>
