@@ -107,6 +107,11 @@ public class AddExhibitActivity extends AppCompatActivity {
         spAuthors.setAdapter(authorsAdapter);
     }
 
+    /**
+     * This method creates an alert dialog for adding a new author.
+     *
+     * @param view pressed button.
+     */
     public void addAuthorBtnClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
         View adAuthorLayout = inflater.inflate(R.layout.add_author_ad, null);
@@ -127,6 +132,15 @@ public class AddExhibitActivity extends AppCompatActivity {
         adAuthor.show();
     }
 
+    /**
+     * This method checks whether the fields are filled correctly.
+     * If all is well, it saves the new author in the database.
+     * Otherwise the user is notified that all fields must be filled.
+     *
+     * @param name    author name.
+     * @param dob     author dob.
+     * @param country author country.
+     */
     private void addAuthor(String name, String dob, String country) {
         if (name.trim().length() > 0 && dob.trim().length() > 0 && country.trim().length() > 0) {
             final Author author = new Author(name, dob, country);
@@ -162,6 +176,14 @@ public class AddExhibitActivity extends AppCompatActivity {
         spFundCatalogs.setAdapter(fundCatalogsAdapter);
     }
 
+    /**
+     * This is the method for displaying the alert dialog for adding a fund catalog (and fund,
+     * if necessary). The addition of a new fund is regulated by the checkbox. The method partially
+     * checks the filling of fields. If the fields are not filled the user is notified that all
+     * fields must be filled.
+     *
+     * @param view pressed button.
+     */
     public void addFundCatalogBtnClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
         View adFundCatalogView = inflater.inflate(R.layout.add_fund_catalog_ad, null);
@@ -225,6 +247,15 @@ public class AddExhibitActivity extends AppCompatActivity {
         spFunds.setAdapter(fundsAdapter);
     }
 
+    /**
+     * This method checks whether the fields are filled correctly.
+     * If all is well, it saves the new fund catalog and fund in the database.
+     * Otherwise the user is notified that all fields must be filled.
+     *
+     * @param fcName fund catalog name.
+     * @param fName  fund name.
+     * @param fDescr fund description.
+     */
     private void addFundCatalogWithNewFund(String fcName, String fName, String fDescr) {
         if (fName.trim().length() > 0 && fDescr.trim().length() > 0 && fcName.trim().length() > 0) {
             Fund addedFund = new Fund(fName, fDescr);
@@ -276,6 +307,12 @@ public class AddExhibitActivity extends AppCompatActivity {
         tvExhibitions.setText(getString(R.string.exhibitions));
     }
 
+    /**
+     * If all necessary for exhibit fields are filled, then the exhibit is stored in the database,
+     * otherwise the user is notified that all fields must be filled.
+     *
+     * @param view pressed button.
+     */
     public void submitBtnClicked(View view) {
         String name = etExhibitName.getText().toString();
         String creationYear = etCreationYear.getText().toString();
