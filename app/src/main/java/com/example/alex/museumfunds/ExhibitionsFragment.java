@@ -87,6 +87,12 @@ public class ExhibitionsFragment extends Fragment {
         return dbHelper;
     }
 
+    /**
+     * This is the method for obtaining all the exhibits of the exhibition.
+     *
+     * @param exhibition exhibition, the exhibits of which you need to get.
+     * @return list of exhibits if exists, otherwise null.
+     */
     public List<Exhibit> getExhibits(Exhibition exhibition) {
         try {
             if (exhibitsPq == null) {
@@ -101,6 +107,12 @@ public class ExhibitionsFragment extends Fragment {
         return null;
     }
 
+    /**
+     * This method prepares a query for the receipt of exhibits.
+     *
+     * @return prepared query for getting the exhibits.
+     * @throws SQLException if we can not get DAO or problems with query builder.
+     */
     private PreparedQuery<Exhibit> makeExhibitsPq() throws SQLException {
         Dao<ExhibitExhibition, Integer> dao = getHelper().getExhibitExhibitionDao();
         QueryBuilder<ExhibitExhibition, Integer> exhibitExhibitionQb = dao.queryBuilder();
