@@ -103,6 +103,11 @@ public class AddExhibitionActivity extends AppCompatActivity {
         spOrganisers.setAdapter(organisersAdaptor);
     }
 
+    /**
+     * This method creates an alert dialog for adding a new organiser.
+     *
+     * @param view pressed button.
+     */
     public void addOrganiserBtnClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
         View adOrganiserLayout = inflater.inflate(R.layout.add_organiser_ad, null);
@@ -123,6 +128,15 @@ public class AddExhibitionActivity extends AppCompatActivity {
         adOrganiser.show();
     }
 
+    /**
+     * This method checks whether the fields are filled correctly.
+     * If all is well, it saves the new organiser in the database.
+     * Otherwise the user is notified that all fields must be filled.
+     *
+     * @param name    organiser name.
+     * @param address organiser address.
+     * @param number  organiser phone number.
+     */
     private void addOrganiser(String name, String address, String number) {
         if (name.trim().length() > 0 && address.trim().length() > 0 && number.trim().length() > 0) {
             final Organiser org = new Organiser(name, address, number);
@@ -158,6 +172,12 @@ public class AddExhibitionActivity extends AppCompatActivity {
         tvExhibits.setText(getText(R.string.exhibits));
     }
 
+    /**
+     * If all necessary for exhibition fields are filled correctly, then the exhibition is stored
+     * in the database, otherwise the user is notified that all fields must be filled correctly.
+     *
+     * @param view pressed button.
+     */
     public void submitBtnClicked(View view) {
         String name = etExhibitionName.getText().toString();
         String duration = etDuration.getText().toString();
