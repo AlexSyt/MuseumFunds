@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alex.museumfunds.db.DbHelper;
 import com.example.alex.museumfunds.model.Exhibit;
@@ -143,6 +145,10 @@ class ExhibitionCardAdapter extends RecyclerView.Adapter<ExhibitionCardAdapter.E
     public ExhibitionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.exhibition_card, parent, false);
+
+        ImageButton print = (ImageButton) itemView.findViewById(R.id.print_exhibition_ib);
+        print.setOnClickListener(v ->
+                Toast.makeText(fragment.getContext(), "In Development", Toast.LENGTH_SHORT).show());
 
         return new ExhibitionCardAdapter.ExhibitionViewHolder(itemView);
     }
