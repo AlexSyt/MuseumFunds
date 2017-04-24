@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MuseumFunds</string>
+    <string name="app_name">Museum Funds</string>
     <string name="add_new_exhibit">Add New Exhibit</string>
     <string name="exhibit_name">Exhibit Name</string>
     <string name="exhibit_creation_year">Creation Year</string>
